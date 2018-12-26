@@ -125,8 +125,8 @@ Value.def 配合来定义括各种ValueTy
    };
 
 然后我们看 Argument 类的构造函数的定义(
-llvm-5.0.1.src/include/llvm/lib/Argument.cpp ) 和 Value 类构造函数的定义
-()
+llvm-5.0.1.src/include/llvm/lib/Argument.cpp ) 和 Value
+类构造函数的定义( llvm-5.0.1.src/include/llvm/lib/Value.cpp )
 
 .. code:: c
 
