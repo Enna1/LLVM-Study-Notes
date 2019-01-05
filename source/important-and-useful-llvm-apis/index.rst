@@ -1,4 +1,4 @@
-第一部分 Get Started
+Important and useful LLVM APIs
 =========================================================
 
 .. toctree::
@@ -6,6 +6,7 @@
    :caption: Contents:
 
    RTTI-in-LLVM
+   StringRef-and-Twine
 
 
 

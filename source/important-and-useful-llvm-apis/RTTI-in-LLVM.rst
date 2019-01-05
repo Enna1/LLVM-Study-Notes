@@ -69,7 +69,7 @@ isa<>的实现
        return V->getValueID() == ArgumentVal;
    }
 
-Value 类的实现中与\ ``classof``\ 函数相关的内容如下：
+Value 类的实现中与 ``classof`` 函数相关的内容如下：
 
 .. code:: c
 
@@ -105,8 +105,8 @@ Value 类的实现中与\ ``classof``\ 函数相关的内容如下：
        ...
    };
 
-在 Value 类内部定义了一个枚举变量ValueTy，通过 ``HANDLE_VALUE`` 宏和文件
-Value.def 配合来定义括各种ValueTy
+在 Value 类内部定义了一个枚举变量 ValueTy，通过 ``HANDLE_VALUE``
+宏和文件 Value.def 配合来定义各种ValueTy
 中的枚举常量，我们可以在其中看到枚举常量 ``ArgumentVal`` 的定义方式。
 
 .. code:: c
@@ -155,11 +155,12 @@ llvm-5.0.1.src/include/llvm/lib/Argument.cpp ) 和 Value
 Value 构造函数会把它成员变量 SubclassID
 的值设置为其第二个参数的值。所以如果有一个 Argument
 类的对象，然后我们拿到的是指向该 Argument 对象的 Value 类型的指针 V
-时，我们我们以该指针作为参数调用\ ``isa<Argument>(V)``\ 时，会返回\ ``Argument::classof(V)``\ 的值，而前面我们看到，\ ``Argument::classof(V)``
-的值就是 ``return V->getValueID() == ArgumentVal;``
-，因为在构造该Argument 对象时，已经将其基类 Value 的 SubclassID 设置为
-ArgumentVal ，所以最后会返回true，即指针 V 指向的对象是一个 Argument
-类型的对象。
+时，我们我们以该指针作为参数调用 ``isa<Argument>(V)`` 时，会返回
+``Argument::classof(V)``
+的值，而前面我们看到，\ ``Argument::classof(V)`` 的值就是
+``return V->getValueID() == ArgumentVal;`` ，因为在构造该 Argument
+对象时，已经将其基类 Value 的 SubclassID 设置为 ArgumentVal
+，所以最后会返回true，即指针 V 指向的对象是一个 Argument 类型的对象。
 
 cast<>的实现
 ------------
@@ -209,7 +210,7 @@ cast<>的实现
        }
    };
 
-先使用 C++ ``const_cast``\ 然后对 ``const_cast``
+先使用 C++ ``const_cast`` 然后对 ``const_cast``
 的结果进行C风格的强制类型转换。
 
 dyn_cast<>的实现

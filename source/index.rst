@@ -11,7 +11,7 @@ Welcome to Inside-LLVM-Clang-Source-Code's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   beginning/index
+   important-and-useful-llvm-apis/index
 
 
 
