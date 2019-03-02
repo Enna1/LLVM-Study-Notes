@@ -12,6 +12,7 @@ Welcome to Inside-LLVM-Clang-Source-Code's documentation!
    :caption: Contents:
 
    important-and-useful-llvm-apis/index
+   alias-analysis/index
 
 
 
