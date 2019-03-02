@@ -10,7 +10,6 @@ Alias Analysis
 
 
 
-Indices and tables
 ==================
 
 * :ref:`genindex`

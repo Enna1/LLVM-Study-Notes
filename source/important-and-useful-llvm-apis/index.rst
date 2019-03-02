@@ -10,7 +10,6 @@ Important and useful LLVM APIs
 
 
 
-Indices and tables
 ==================
 
 * :ref:`genindex`
