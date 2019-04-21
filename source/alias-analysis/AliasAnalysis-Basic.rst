@@ -1,5 +1,5 @@
-AliasAnalysis-Basic
-===================
+Alias Analysis Basic
+====================
 
 Introduction
 ------------

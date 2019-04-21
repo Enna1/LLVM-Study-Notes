@@ -13,7 +13,7 @@ Welcome to Inside-LLVM-Clang-Source-Code's documentation!
 
    important-and-useful-llvm-apis/index
    alias-analysis/index
-
+   called-value-propagation/index
 
 
 Indices and tables
