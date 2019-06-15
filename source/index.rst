@@ -1,9 +1,9 @@
-.. Inside-LLVM-Clang-Source-Code documentation master file, created by
+.. LLVM-Clang-Study-Notes documentation master file, created by
    sphinx-quickstart on Wed Dec 26 09:32:48 2018.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Inside-LLVM-Clang-Source-Code's documentation!
+Welcome to Enna1's study notes about LLVM and Clang!
 =========================================================
 
 .. toctree::
@@ -14,7 +14,7 @@ Welcome to Inside-LLVM-Clang-Source-Code's documentation!
    important-and-useful-llvm-apis/index
    alias-analysis/index
    called-value-propagation/index
-   misc/index
+   llvm-ir/index
 
 
 Indices and tables

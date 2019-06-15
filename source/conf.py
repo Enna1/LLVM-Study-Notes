@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Inside-LLVM-Clang-Source-Code'
+project = 'LLVM-Clang-Study-Notes'
 copyright = '2018, Enna1'
 author = 'Enna1'
 
@@ -101,7 +101,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Inside-LLVM-Clang-Source-Codedoc'
+htmlhelp_basename = 'LLVM-Clang-Study-Notesdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -128,7 +128,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Inside-LLVM-Clang-Source-Code.tex', 'Inside-LLVM-Clang-Source-Code Documentation',
+    (master_doc, 'LLVM-Clang-Study-Notes.tex', 'LLVM-Clang-Study-Notes Documentation',
      'Enna1', 'manual'),
 ]
 
@@ -138,7 +138,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'inside-llvm-clang-source-code', 'Inside-LLVM-Clang-Source-Code Documentation',
+    (master_doc, 'LLVM-Clang-Study-Notes', 'LLVM-Clang-Study-Notes Documentation',
      [author], 1)
 ]
 
@@ -149,8 +149,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'Inside-LLVM-Clang-Source-Code', 'Inside-LLVM-Clang-Source-Code Documentation',
-     author, 'Inside-LLVM-Clang-Source-Code', 'One line description of project.',
+    (master_doc, 'LLVM-Clang-Study-Notes', 'LLVM-Clang-Study-Notes Documentation',
+     author, 'LLVM-Clang-Study-Notes', 'One line description of project.',
      'Miscellaneous'),
 ]
 
