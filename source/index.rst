@@ -15,6 +15,7 @@ Welcome to Enna1's study notes about LLVM and Clang!
    alias-analysis/index
    called-value-propagation/index
    llvm-ir/index
+   misc/index
 
 
 Indices and tables

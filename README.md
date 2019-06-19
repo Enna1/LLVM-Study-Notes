@@ -18,4 +18,5 @@ Read the Docs在线文档地址：https://llvm-clang-study-notes.readthedocs.io/
   - [3.2. CalledValuePropagation](https://llvm-clang-study-notes.readthedocs.io/en/latest/called-value-propagation/Called-Value-Propagation.html)
 - LLVM IR
   - [4.1. ConstantExpr](https://llvm-clang-study-notes.readthedocs.io/en/latest/llvm-ir/ConstantExpr.html)
-
+- Misc
+  - [5.1. Exploring C++ Undefined Behavior Using Constexpr](https://llvm-clang-study-notes.readthedocs.io/en/latest/misc/UB_Constexpr.html)
