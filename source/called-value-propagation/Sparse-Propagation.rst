@@ -6,8 +6,19 @@ Introduction
 
 数据流分析是一种用于在计算在某个程序点的程序状态（数据流值）的技术。基于数据流分析的典型例子有常量传播、到达定值等。
 
-在 LLVM 中提供了一个用于实现 dataflow-like analysis 的
-infrastructure，位于
+根据R大在知乎的回答（见参考链接），因为 SSA 形式贯穿于 LLVM IR，所以在
+LLVM 中都针对 SSA Value 的数据流分析都是用 sparse 方式去做的，而不像传统
+IR 那样迭代遍历每条指令去传播信息直到到达不同点（需要注意的是，在 LLVM
+IR 中 “memory” 不是 SSA value，所以对 “memory” 分析的话，就无法用 sparse
+的方式了；但是 LLVM 有一个 memory SSA 的项目，我对 memory SSA
+没有了解，后面有时间写篇文章填坑）。
+
+-  dense
+   分析：要用个容器携带所有变量的信息去遍历所有指令，即便某条指令不关心的变量信息也会携带过去
+-  sparse 分析：变量的信息直接在 def 与 use
+   之间传播，中间不需要遍历其他不相关的指令
+
+在 LLVM 中提供了一个用于实现 sparse analysis 的 infrastructure，位于
 ``llvm-7.0.0.src/include/llvm/Analysis/SparsePropagation.h`` 。
 
 在标准的数据流分析框架中，应该有如下的组成部分:
@@ -18,17 +29,15 @@ infrastructure，位于
    ^)是一个半格
 -  F: V 到 V 的传递函数族。
 
-基于 SparsePropagation 实例化一个 dataflow-like analysis 时需要提供
-LatticeKey, LatticeVal 和 LatticeFunction。其中 LatticeVal
-对应数据流值，LatticeKey 用于将 LLVM Value 映射到
-LatticeVal，而LatticeFunction 对应传递函数。好像基于 SparsePropagation
-实例化 dataflow-like analysis 时，分析方向只能是前向的。
+基于 SparsePropagation 实例化一个分析时需要提供 LatticeKey, LatticeVal
+和 LatticeFunction。其中 LatticeVal 对应数据流值，LatticeKey 用于将 LLVM
+Value 映射到 LatticeVal，而LatticeFunction 对应传递函数。好像基于
+SparsePropagation 实例化一个分析时，分析方向只能是前向的。
 
 AbstractLatticeFunction
 -----------------------
 
-在实例化一个 dataflow-like analysis 时，需要继承 AbstractLatticeFunction
-类来实现一个 LatticeFunction。
+首选，需要继承 AbstractLatticeFunction 类来实现一个 LatticeFunction。
 
 .. code:: cpp
 
@@ -300,3 +309,8 @@ Example
 
 CalledValuePropagation 是一个 transform pass，基于 SparsePropagation
 实现了对间接调用点 (indirect call sites)的被调函数的可能取值进行分析。
+
+Reference
+---------
+
+https://www.zhihu.com/question/41959902/answer/93087273

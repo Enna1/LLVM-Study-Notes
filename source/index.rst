@@ -12,7 +12,7 @@ Welcome to Enna1's study notes about LLVM and Clang!
    :caption: Contents:
 
    important-and-useful-llvm-apis/index
-   mem2reg/index
+   ssa/index
    alias-analysis/index
    called-value-propagation/index
    llvm-ir/index

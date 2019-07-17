@@ -1,10 +1,11 @@
-Mem2Reg
+SSA
 =========================================================
 
 .. toctree::
    :maxdepth: 1
    :caption: Contents:
 
+   SSA-Construction
    Mem2Reg
 
 
