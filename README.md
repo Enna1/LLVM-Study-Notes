@@ -13,6 +13,8 @@ Read the Docs在线文档地址：https://llvm-clang-study-notes.readthedocs.io/
 - SSA
   - [SSA construction](https://llvm-clang-study-notes.readthedocs.io/en/latest/ssa/SSA-Construction.html)
   - [Mem2Reg](https://llvm-clang-study-notes.readthedocs.io/en/latest/ssa/Mem2Reg.html)
+- Aggressive Dead Code Elimination
+  - [Aggressive Dead Code Elimination](https://llvm-clang-study-notes.readthedocs.io/en/latest/aggressive-dead-code-elimination/ADCE.html)
 - Alias Analysis
   - [Alias Analysis Basic](https://llvm-clang-study-notes.readthedocs.io/en/latest/alias-analysis/AliasAnalysis-Basic.html)
   - [CFL Anderson Alias Analysis](https://llvm-clang-study-notes.readthedocs.io/en/latest/alias-analysis/CFL-Anderson-AliasAnalysis.html)

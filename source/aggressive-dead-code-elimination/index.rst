@@ -1,12 +1,11 @@
-Called Value Propagation
+Aggressive Dead Code Elimination
 =========================================================
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   Sparse-Propagation
-   Called-Value-Propagation
+   ADCE
 
 
 
