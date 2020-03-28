@@ -21,6 +21,8 @@ Read the Docs在线文档地址：https://llvm-clang-study-notes.readthedocs.io/
 - Called Value Propagation
   - [Sparse Propagation](https://llvm-clang-study-notes.readthedocs.io/en/latest/called-value-propagation/Sparse-Propagation.html)
   - [Called Value Propagation](https://llvm-clang-study-notes.readthedocs.io/en/latest/called-value-propagation/Called-Value-Propagation.html)
+- Correlated Value Propagation
+    - [Correlated Value Propagation](https://llvm-clang-study-notes.readthedocs.io/en/latest/correlated-value-propagation/Correlated-Value-Propagation.html)
 - LLVM IR
   - [ConstantExpr](https://llvm-clang-study-notes.readthedocs.io/en/latest/llvm-ir/ConstantExpr.html)
 - Misc
