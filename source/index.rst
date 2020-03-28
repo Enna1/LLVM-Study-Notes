@@ -16,6 +16,7 @@ Welcome to Enna1's study notes about LLVM and Clang!
    aggressive-dead-code-elimination/index
    alias-analysis/index
    called-value-propagation/index
+   correlated-value-propagation/index
    llvm-ir/index
    misc/index
 
