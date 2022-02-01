@@ -206,7 +206,7 @@ symbol，将该 symbol 引用的其他 symbol 标记为 live 的，加入到 wor
    859:     for (auto &S : VI.getSummaryList())
    860:       S->setLive(true);
    861:   }
-   862: 
+   862:
    863:   // Add values flagged in the index as live roots to the worklist.
    864:   for (const auto &Entry : Index) {
    865:     auto VI = Index.getValueInfo(Entry);
@@ -218,7 +218,7 @@ symbol，将该 symbol 引用的其他 symbol 标记为 live 的，加入到 wor
    871:         break;
    872:       }
    873:   }
-   874: 
+   874:
           visit 判断当前处理的 symbol 是否在已经被标记为 live，即之前已经加过 worklist 中被处理过了。
           如果没有，则将其标记为 live，然后添加到 worklist 中。
 
@@ -235,13 +235,13 @@ symbol，将该 symbol 引用的其他 symbol 标记为 live 的，加入到 wor
    885:     VI = updateValueInfoForIndirectCalls(Index, VI);
    886:     if (!VI)
    887:       return;
-   888: 
+   888:
    889:     if (llvm::any_of(VI.getSummaryList(),
    890:                      [](const std::unique_ptr<llvm::GlobalValueSummary> &S) {
    891:                        return S->isLive();
    892:                      }))
    893:       return;
-   894: 
+   894:
    895:     // We only keep live symbols that are known to be non-prevailing if any are
    896:     // available_externally, linkonceodr, weakodr. Those symbols are discarded
    897:     // later in the EliminateAvailableExternally pass and setting them to
@@ -258,18 +258,18 @@ symbol，将该 symbol 引用的其他 symbol 标记为 live 的，加入到 wor
    908:         else if (GlobalValue::isInterposableLinkage(S->linkage()))
    909:           Interposable = true;
    910:       }
-   911: 
+   911:
    912:       if (!IsAliasee) {
    913:         if (!KeepAliveLinkage)
    914:           return;
-   915: 
+   915:
    916:         if (Interposable)
    917:           report_fatal_error(
    918:               "Interposable and available_externally/linkonce_odr/weak_odr "
    919:               "symbol");
    920:       }
    921:     }
-   922: 
+   922:
    923:     for (auto &S : VI.getSummaryList())
    924:       S->setLive(true);
    925:     ++LiveSymbols;
@@ -296,7 +296,7 @@ symbol，将该 symbol 引用的其他 symbol 标记为 live 的，加入到 wor
    944:     }
    945:   }
    946:   Index.setWithGlobalValueDeadStripping();
-   947: 
+   947:
    948:   unsigned DeadSymbols = Index.size() - LiveSymbols;
    949:   LLVM_DEBUG(dbgs() << LiveSymbols << " symbols Live, and " << DeadSymbols
    950:                     << " symbols Dead \n");
@@ -307,7 +307,7 @@ symbol，将该 symbol 引用的其他 symbol 标记为 live 的，加入到 wor
 这里再次用在 Example 节中的例子来分析该函数 ``computeDeadSymbols()`` ：
 
 1. 第 854 - 873 行初始化 Worklist，对于 Example
-   节中的例子来说，Worklist中此时只有一个元素，就是 ``main()``
+   节中的例子来说，Worklist 中此时只有一个元素，就是 ``main()``
    函数对应的 ValueInfo
 
    ::

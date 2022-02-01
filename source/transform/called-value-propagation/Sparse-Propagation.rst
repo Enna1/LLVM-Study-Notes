@@ -31,13 +31,13 @@ IR 中 “memory” 不是 SSA value，所以对 “memory” 分析的话，就
 
 基于 SparsePropagation 实例化一个分析时需要提供 LatticeKey, LatticeVal
 和 LatticeFunction。其中 LatticeVal 对应数据流值，LatticeKey 用于将 LLVM
-Value 映射到 LatticeVal，而LatticeFunction 对应传递函数。好像基于
+Value 映射到 LatticeVal，而 LatticeFunction 对应传递函数。好像基于
 SparsePropagation 实例化一个分析时，分析方向只能是前向的。
 
 AbstractLatticeFunction
 -----------------------
 
-首选，需要继承 AbstractLatticeFunction 类来实现一个 LatticeFunction。
+首先，需要继承 AbstractLatticeFunction 类来实现一个 LatticeFunction。
 
 .. code:: cpp
 

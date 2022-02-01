@@ -6,7 +6,7 @@ Constant
 
 在 LLVM IR 中有这样一种值: constants，这种值在 LLVM IR
 中能独立于基本块和函数存在，包括数、全局变量、常量字符数组等。我们拿
-LLVM IR 中的一条指令为例来简单说明以下：
+LLVM IR 中的一条指令为例来简单说明一下：
 
 ``llvm ir call void @llvm.memset.p0i8.i64(i8* nonnull align 8 %some, i8 0, i64 40, i1 false)``
 
@@ -102,7 +102,7 @@ BreakConstantExpr
    void visitConstantExpr(ConstantExpr *CE)
    {
        switch (CE->getOpcode())
-       {    
+       {
        case Instruction::Trunc:
        case Instruction::ZExt:
        case Instruction::SExt:
@@ -124,7 +124,7 @@ BreakConstantExpr
        case Instruction::InsertElement:
        case Instruction::ShuffleVector:
        case Instruction::ExtractValue:
-       case Instruction::InsertValue:    
+       case Instruction::InsertValue:
        case Instruction::Add:
        case Instruction::Sub:
        case Instruction::FSub:
@@ -141,7 +141,7 @@ BreakConstantExpr
        case Instruction::Xor:
        case Instruction::Shl:
        case Instruction::LShr:
-       case Instruction::AShr:    
+       case Instruction::AShr:
        default:
            llvm_unreachable("Unknown constantexpr type encountered!");
        }

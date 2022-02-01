@@ -155,12 +155,12 @@ llvm-5.0.1.src/include/llvm/lib/Argument.cpp ) 和 Value
 Value 构造函数会把它成员变量 SubclassID
 的值设置为其第二个参数的值。所以如果有一个 Argument
 类的对象，然后我们拿到的是指向该 Argument 对象的 Value 类型的指针 V
-时，我们我们以该指针作为参数调用 ``isa<Argument>(V)`` 时，会返回
+时，我们以该指针作为参数调用 ``isa<Argument>(V)`` 时，会返回
 ``Argument::classof(V)``
 的值，而前面我们看到，\ ``Argument::classof(V)`` 的值就是
 ``return V->getValueID() == ArgumentVal;`` ，因为在构造该 Argument
 对象时，已经将其基类 Value 的 SubclassID 设置为 ArgumentVal
-，所以最后会返回true，即指针 V 指向的对象是一个 Argument 类型的对象。
+，所以最后会返回 true，即指针 V 指向的对象是一个 Argument 类型的对象。
 
 cast<>的实现
 ------------
@@ -211,7 +211,7 @@ cast<>的实现
    };
 
 先使用 C++ ``const_cast`` 然后对 ``const_cast``
-的结果进行C风格的强制类型转换。
+的结果进行 C 风格的强制类型转换。
 
 dyn_cast<>的实现
 ----------------
@@ -236,7 +236,7 @@ dyn_cast<>的实现
    }
 
 可以看到 ``dyn_cast`` 的是通过三元运算符实现的，如果 ``isa<X>(val)``
-返回 true (val是 X 类的一个对象)，则将 val ``cast`` 为 X
+返回 true (val 是 X 类的一个对象)，则将 val ``cast`` 为 X
 类后返回，否则返回空指针 nullptr 。
 
 让LLVM-style RTTI支持自己的编写的类
@@ -251,9 +251,9 @@ dyn_cast<>的实现
        | SpecialSquare
      | Circle
 
-了解了 LLVM 中 RTTI 的实现，我们想要让其支持自己编写的类，模仿 Value 类
+了解 LLVM 中 RTTI 的实现后，我们想要让其支持自己编写的类，模仿 Value 类
 和 Argument
-类的写法，声明一个枚举变量，在子类构造函数中显示调用父类构造函数并传递给父类构造函数一个表示子类类型的枚举常量，还有需要定义
+类的写法，声明一个枚举变量，在子类构造函数中显示调用父类构造函数并传递给父类构造函数一个表示子类类型的枚举常量，还需要定义
 ``classof`` 函数。
 
 具体的实现代码如下：

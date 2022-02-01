@@ -15,16 +15,12 @@ Read the Docs在线文档地址：https://llvm-clang-study-notes.readthedocs.io/
 - SSA
   - [SSA construction](https://llvm-clang-study-notes.readthedocs.io/en/latest/ssa/SSA-Construction.html)
   - [Mem2Reg](https://llvm-clang-study-notes.readthedocs.io/en/latest/ssa/Mem2Reg.html)
-- Aggressive Dead Code Elimination
-  - [Aggressive Dead Code Elimination](https://llvm-clang-study-notes.readthedocs.io/en/latest/aggressive-dead-code-elimination/ADCE.html)
-- Alias Analysis
-  - [Alias Analysis Basic](https://llvm-clang-study-notes.readthedocs.io/en/latest/alias-analysis/AliasAnalysis-Basic.html)
-  - [CFL Anderson Alias Analysis](https://llvm-clang-study-notes.readthedocs.io/en/latest/alias-analysis/CFL-Anderson-AliasAnalysis.html)
-- Called Value Propagation
-  - [Sparse Propagation](https://llvm-clang-study-notes.readthedocs.io/en/latest/called-value-propagation/Sparse-Propagation.html)
-  - [Called Value Propagation](https://llvm-clang-study-notes.readthedocs.io/en/latest/called-value-propagation/Called-Value-Propagation.html)
-- Correlated Value Propagation
-    - [Correlated Value Propagation](https://llvm-clang-study-notes.readthedocs.io/en/latest/correlated-value-propagation/Correlated-Value-Propagation.html)
+- Analysis
+  - [Alias Analysis](https://llvm-clang-study-notes.readthedocs.io/en/latest/analysis/alias-analysis/index.html)
+- Transform
+  - [Aggressive Dead Code Elimination](https://llvm-clang-study-notes.readthedocs.io/en/latest/transform/aggressive-dead-code-elimination/index.html)
+  - [Called Value Propagation](https://llvm-clang-study-notes.readthedocs.io/en/latest/transform/called-value-propagation/index.html)
+  - [Correlated Value Propagation](https://llvm-clang-study-notes.readthedocs.io/en/latest/transform/correlated-value-propagation/index.html)
 - Link Time Optimization
   - [LTO Remove Dead Symbol](https://llvm-clang-study-notes.readthedocs.io/en/latest/lto/RemoveDeadSymbol.html)
 - Misc

@@ -14,10 +14,8 @@ Welcome to Enna1's study notes about LLVM and Clang!
    important-and-useful-llvm-apis/index
    llvm-ir/index
    ssa/index
-   aggressive-dead-code-elimination/index
-   alias-analysis/index
-   called-value-propagation/index
-   correlated-value-propagation/index
+   analysis/index
+   transform/index
    lto/index
    misc/index
 

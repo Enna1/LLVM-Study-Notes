@@ -267,7 +267,7 @@ Promotable。详细的可以看 ``isAllocaPromotable`` 函数的代码实现。
    }
 
 如果没有 Promotable 的
-AllocaInst，那么毫无疑问直接返回；否则构造了一个结构体
+AllocaInst，那么毫无疑问直接返回；否则构造一个结构体
 ``PromoteMem2Reg`` 的对象，然后调用该对象的 ``run`` 函数，注意
 ``PromoteMem2Reg(Allocas, DT, AC).run()`` 中的 ``PromoteMem2Reg``
 是一个结构体。
@@ -408,9 +408,9 @@ Frontier) 和标准的 SSA 构建算法来将 alloca/load/store 形式的 LLVM I
      ... // 略
      for (unsigned AllocaNum = 0; AllocaNum != Allocas.size(); ++AllocaNum) {
        AllocaInst *AI = Allocas[AllocaNum];
-       
+
        ... // 略
-       
+
        // If we haven't computed a numbering for the BB's in the function, do so
        // now.
        if (BBNumbers.empty()) {
@@ -459,7 +459,7 @@ Frontier) 和标准的 SSA 构建算法来将 alloca/load/store 形式的 LLVM I
          QueuePhiNode(BB, AllocaNum, CurrentVersion);
 
      }
-     
+
      if (Allocas.empty())
        return; // All of the allocas must have been trivial!
 
@@ -490,7 +490,7 @@ Frontier) 和标准的 SSA 构建算法来将 alloca/load/store 形式的 LLVM I
 
      // The renamer uses the Visited set to avoid infinite loops.  Clear it now.
      Visited.clear();
-     
+
      ... // 略
    }
 

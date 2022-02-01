@@ -69,7 +69,7 @@ Place all Φ()
 
 |image2|
 
-这里说 “This essentially computes the Iterated Dominance Frontier”
+思考一下，这里说 “This essentially computes the Iterated Dominance Frontier on the fly”
 为什么？
 
 上述算法首先计算了 DF(defsites)，对于 DF(defsites)

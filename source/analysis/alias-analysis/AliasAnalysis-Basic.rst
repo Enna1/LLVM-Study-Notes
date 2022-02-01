@@ -36,7 +36,7 @@ may alias 所占的比例越小）。
 
 ::
 
-   ➜  ~ opt -cfl-anders-aa -aa-eval ./test.bc -disable-output -stats 
+   ➜  ~ opt -cfl-anders-aa -aa-eval ./test.bc -disable-output -stats
    ===== Alias Analysis Evaluator Report =====
      210 Total Alias Queries Performed
      161 no alias responses (76.6%)
@@ -56,7 +56,7 @@ Must, May, Partial and No Alias Responses
 
 正如上述命令的输出示例所示，在 LLVM 中别名分析的结果有四种：
 
--  NoAlias，两个指针之前没有直接依赖的关系时就是 NoAlias
+-  NoAlias，两个指针之间没有直接依赖的关系时就是 NoAlias
    。比如：两个指针指向非重叠的内存区域；两个指针只被用于读取内存 ( ?
    )；有一段内存空间，存在一个指针用于访问该段内存，该段内存空间被
    free（释放），然后被
