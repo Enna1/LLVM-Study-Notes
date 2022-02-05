@@ -1,14 +1,11 @@
-Transform
+SLP Vectorizer
 =========================================================
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   aggressive-dead-code-elimination/index
-   called-value-propagation/index
-   correlated-value-propagation/index
-   slp-vectorizer/index
+   SLP_PLDI'00
 
 
 

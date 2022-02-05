@@ -21,6 +21,7 @@ Read the Docs在线文档地址：https://llvm-clang-study-notes.readthedocs.io/
   - [Aggressive Dead Code Elimination](https://llvm-clang-study-notes.readthedocs.io/en/latest/transform/aggressive-dead-code-elimination/index.html)
   - [Called Value Propagation](https://llvm-clang-study-notes.readthedocs.io/en/latest/transform/called-value-propagation/index.html)
   - [Correlated Value Propagation](https://llvm-clang-study-notes.readthedocs.io/en/latest/transform/correlated-value-propagation/index.html)
+  - [SLP Vectorizer](https://llvm-clang-study-notes.readthedocs.io/en/latest/transform/slp-vectorizer/index.html)
 - Link Time Optimization
   - [LTO Remove Dead Symbol](https://llvm-clang-study-notes.readthedocs.io/en/latest/lto/RemoveDeadSymbol.html)
 - Misc
