@@ -7,7 +7,6 @@ Welcome to Enna1's study notes about LLVM and Clang!
 =========================================================
 
 .. toctree::
-   :numbered:
    :maxdepth: 2
    :caption: Contents:
 
