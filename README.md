@@ -1,9 +1,8 @@
-# LLVM/Clang学习笔记
-我在阅读LLVM/Clang源代码、学习LLVM/Clang相关内容时记录的笔记。如果发现错误，有意见或者建议，欢迎提Issue指出。
+# LLVM/Clang 学习笔记
 
-Read the Docs在线文档地址：https://llvm-clang-study-notes.readthedocs.io/
+我在阅读 LLVM/Clang 源代码、学习 LLVM/Clang 相关内容时记录的笔记。如果发现错误，有意见或者建议，欢迎提 Issue 指出。
 
-
+Read the Docs 在线文档地址：https://llvm-clang-study-notes.readthedocs.io/
 
 ## Contents:
 
@@ -24,6 +23,7 @@ Read the Docs在线文档地址：https://llvm-clang-study-notes.readthedocs.io/
   - [SLP Vectorizer](https://llvm-clang-study-notes.readthedocs.io/en/latest/transform/slp-vectorizer/index.html)
 - Link Time Optimization
   - [LTO Remove Dead Symbol](https://llvm-clang-study-notes.readthedocs.io/en/latest/lto/RemoveDeadSymbol.html)
+- Sanitizer
+  - [ThreadSanitizer](https://llvm-clang-study-notes.readthedocs.io/en/latest/sanitizer/tsan/index.html)
 - Misc
   - [Exploring C++ Undefined Behavior Using Constexpr](https://llvm-clang-study-notes.readthedocs.io/en/latest/misc/UB_Constexpr.html)
-

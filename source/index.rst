@@ -16,6 +16,7 @@ Welcome to Enna1's study notes about LLVM and Clang!
    analysis/index
    transform/index
    lto/index
+   sanitizer/index
    misc/index
 
 
