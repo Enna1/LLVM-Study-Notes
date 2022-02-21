@@ -64,7 +64,7 @@ int main() {
 
 happen-before 的定义（尝试用中文表述总觉得词不达意，摆烂直接用英文原文）：
 
-A trace α captures an execution of $\alpha$ multithreaded program by listing the sequence of operations performed by the various threads.
+A trace $\alpha$ captures an execution of a multithreaded program by listing the sequence of operations performed by the various threads.
 
 **The happens-before relation** $<_\alpha$  for a trace $\alpha$ is the smallest transitively-closed relation over the operations in $\alpha$ such that the relation $a <_\alpha b$ holds whenever $a$  occurs before $b$ in $\alpha$ and one of the following holds:
 
@@ -177,7 +177,7 @@ $DJIT^+$ Algorithm 就是基于 vector clock 来检测 data race 的：
 
 4. 线程 1 获取锁 $m$，vector clock $\mathbb{C}_1$ 的值更新为 $\mathbb{C}_1 \sqcup \mathbb{L}_m$ 即 <0, 8> $\sqcup$ <4, 0> = <4, 8>，其余 vector clock 的值不变
 
-5. 线程 1 写变量 $x$，由于 $\mathbb{C}_1$ 为 <4, 8>，$\mathbb{W}_x$ 为 $4@0$，所以有 $\mathbb{W}_x=4@0 \preceq\;<4, 0>\;=\mathbb{C}_1$，也就是说 $\mathbb{wr(0, x)}\;\text{happen-before}\;\mathbb{wr(1, x)}$，所以线程 1 写变量 $x$ 与线程 0 写变量 $x$ 之间没有 data race。最后还要更新 $\mathbb{W}_x$ 为 $8@1$，表示线程 1 在 clock 为 8 时写了变量 $x$，其余 vector clock 的值不变
+5. 线程 1 写变量 $x$，由于 $\mathbb{C}_1$ 为 <4, 8>，$\mathbb{W}_x$ 为 $4@0$，所以有 $\mathbb{W}_x=4@0 \preceq\;<4,8>\;=\mathbb{C}_1$，也就是说 $\mathbb{wr(0, x)}\;\text{happen-before}\;\mathbb{wr(1, x)}$，所以线程 1 写变量 $x$ 与线程 0 写变量 $x$ 之间没有 data race。最后还要更新 $\mathbb{W}_x$ 为 $8@1$，表示线程 1 在 clock 为 8 时写了变量 $x$，其余 vector clock 的值不变
 
 在这个例子中，我们用 epoch 来代替 vector clock $\mathbb{W}_x$ 后，在判断 $wr(1, x)$ 是否与 $wr(0, x)$ 之间存在 data race 时，将 $O(n)$ 的 vector clock 之间的比较操作 $\sqsubseteq$ 替换优化为了 $O(1)$ 的 epoch 与 vector clock 之间的比较操作 $\preceq$ 。
 
@@ -233,7 +233,7 @@ Read Operations 又细分为 4 条规则：
 
 - **[FT READ SAME EPOCH]**
   
-  此时程序执行的操作是 $rd(t, x)$，即线程 $t$ 读变量 $x$。如果 $R_x = E(t)$，即前一次对变量 $x$ 读与这一次对变量 $x$ 读，是同一个线程 在同一 clock 时刻对变量 $x$ 读，那么不用更新程序状态 $\sigma$
+  此时程序执行的操作是 $rd(t, x)$，即线程 $t$ 读变量 $x$。如果 $R_x = E(t)$，即前一次对变量 $x$ 读与这一次对变量 $x$ 读，是同一个线程在同一 clock 时刻对变量 $x$ 读，那么不用更新程序状态 $\sigma$
 
 - **[FT READ SHARED]**
   
@@ -251,7 +251,7 @@ Read Operations 又细分为 4 条规则：
 
 - **[FT WRITE SAME EPOCH]**
   
-  此时程序执行的操作是 $wr(t, x)$，即线程 $t$ 写变量 $x$。如果 $W_x = E(t)$，即前一次对变量 $x$ 写与这一次对变量 $x$ 写，是同一个线程 在同一 clock 时刻对变量 $x$ 写，那么不用更新程序状态 $\sigma$。
+  此时程序执行的操作是 $wr(t, x)$，即线程 $t$ 写变量 $x$。如果 $W_x = E(t)$，即前一次对变量 $x$ 写与这一次对变量 $x$ 写，是同一个线程在同一 clock 时刻对变量 $x$ 写，那么不用更新程序状态 $\sigma$。
 
 - **[FT WRITE EXCLUSIVE]**
   
@@ -271,7 +271,7 @@ Other operations包括 acquire, release, fork 和 join，FastTrack algorithm 对
 
 - **[FT ACQUIRE]**
   
-  此时程序执行的操作是 $acq(t, m)$，线程 $t$ 获取了锁 $m$ 。将 $C_t$ 的值更新为 $C_t \sqcup \mathbb{L}_m$ 的值
+  此时程序执行的操作是 $acq(t, m)$，线程 $t$ 获取了锁 $m$ 。将 $C_t$ 的值更新为 $C_t \sqcup L_m$ 的值
 
 - **[FT RELEASE]**
   

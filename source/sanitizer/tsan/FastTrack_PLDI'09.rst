@@ -92,7 +92,7 @@ Concepts
 happen-before
 的定义（尝试用中文表述总觉得词不达意，摆烂直接用英文原文）：
 
-A trace α captures an execution of :math:`\alpha` multithreaded program
+A trace :math:`\alpha` captures an execution of a multithreaded program
 by listing the sequence of operations performed by the various threads.
 
 **The happens-before relation** :math:`<_\alpha` for a trace
@@ -282,7 +282,7 @@ joins, waits, notifies, etc)
 
 5. 线程 1 写变量 :math:`x`\ ，由于 :math:`\mathbb{C}_1` 为 <4,
    8>，\ :math:`\mathbb{W}_x` 为 :math:`4@0`\ ，所以有
-   :math:`\mathbb{W}_x=4@0 \preceq\;<4, 0>\;=\mathbb{C}_1`\ ，也就是说
+   :math:`\mathbb{W}_x=4@0 \preceq\;<4,8>\;=\mathbb{C}_1`\ ，也就是说
    :math:`\mathbb{wr(0, x)}\;\text{happen-before}\;\mathbb{wr(1, x)}`\ ，所以线程
    1 写变量 :math:`x` 与线程 0 写变量 :math:`x` 之间没有 data
    race。最后还要更新 :math:`\mathbb{W}_x` 为 :math:`8@1`\ ，表示线程 1
@@ -392,7 +392,7 @@ Read Operations 又细分为 4 条规则：
 
    此时程序执行的操作是 :math:`rd(t, x)`\ ，即线程 :math:`t` 读变量
    :math:`x`\ 。如果 :math:`R_x = E(t)`\ ，即前一次对变量 :math:`x`
-   读与这一次对变量 :math:`x` 读，是同一个线程 在同一 clock 时刻对变量
+   读与这一次对变量 :math:`x` 读，是同一个线程在同一 clock 时刻对变量
    :math:`x` 读，那么不用更新程序状态 :math:`\sigma`
 
 -  **[FT READ SHARED]**
@@ -437,7 +437,7 @@ Write Operations
 
    此时程序执行的操作是 :math:`wr(t, x)`\ ，即线程 :math:`t` 写变量
    :math:`x`\ 。如果 :math:`W_x = E(t)`\ ，即前一次对变量 :math:`x`
-   写与这一次对变量 :math:`x` 写，是同一个线程 在同一 clock 时刻对变量
+   写与这一次对变量 :math:`x` 写，是同一个线程在同一 clock 时刻对变量
    :math:`x` 写，那么不用更新程序状态 :math:`\sigma`\ 。
 
 -  **[FT WRITE EXCLUSIVE]**
@@ -477,8 +477,7 @@ Other operations包括 acquire, release, fork 和 join，FastTrack algorithm
 -  **[FT ACQUIRE]**
 
    此时程序执行的操作是 :math:`acq(t, m)`\ ，线程 :math:`t` 获取了锁
-   :math:`m` 。将 :math:`C_t` 的值更新为 :math:`C_t \sqcup \mathbb{L}_m`
-   的值
+   :math:`m` 。将 :math:`C_t` 的值更新为 :math:`C_t \sqcup L_m` 的值
 
 -  **[FT RELEASE]**
 
