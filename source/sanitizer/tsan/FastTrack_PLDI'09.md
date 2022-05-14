@@ -12,9 +12,9 @@
 
 首先看 data race 的定义：
 
-> A race condition occurs when a program’s execution contains two accesses to the same memory location that are not ordered by the happens-before relation, where at least one of the accesses is a write. ------ from FastTrack: efficient and precise dynamic race detection (PLDI'09)
+- A race condition occurs when a program’s execution contains two accesses to the same memory location that are not ordered by the happens-before relation, where at least one of the accesses is a write. ------ from FastTrack: efficient and precise dynamic race detection (PLDI'09)
 
-> A data race is a situation when two threads concurrently access a shared memory location and at least one of the accesses is a write. ------ from ThreadSanitizer: data race detection in practice (WBIA ’09)
+- A data race is a situation when two threads concurrently access a shared memory location and at least one of the accesses is a write. ------ from ThreadSanitizer: data race detection in practice (WBIA ’09)
 
 即，如果两个线程访问同一个内存位置 (memory location)，至少有一个访问是写操作，并且两个线程访问内存位置的访问顺序是不确定，则说明存在 data race。
 
@@ -123,9 +123,15 @@ $inc_t$ 表示递增 vector clock 的表示线程 $t$ 的那个元素。
 
 $DJIT^+$ Algorithm 就是基于 vector clock 来检测 data race 的：
 
-- 每个线程 $t$ 都对应一个 vector clock $\mathbb{C}_t$，对于任意一个线程 $u$， $\mathbb{C}_t(u)$ 记录了与线程 $t$ 的当前操作满足 happen-before 关系的线程 u 的上一次操作的 clock（如果把线程 $u$ 的上一次操作记为 $O_u$，把线程 $t$ 的当前操作记为 $O_t$，那么有 $O_u\;\text{happen-before}\;O_t$）。
+- 每个线程 $t$ 都对应一个 vector clock $\mathbb{C}_t$，对于任意一个线程 $u$， $\mathbb{C}_t(u)$ 记录了与线程 $t$ 的当前操作满足 happen-before 关系的线程 u 的上一次操作的 clock（如果把线程 $u$ 的上一次操作记为 $O_u$，把线程 $t$ 的当前操作记为 $O_t$，那么有 $O_u\;\text{happen-before}\;O_t$）
 
-- 每一个锁 $m$ 也对应一个 vector clock $\mathbb{L}_m$。
+- 每一个锁 $m$ 也对应一个 vector clock $\mathbb{L}_m$
+
+- 每一个变量 $x$ 对应两个 vector clock $\mathbb{W}_x$ 和 $\mathbb{R}_x$。对于任意一个线程 $t$ ，$\mathbb{W}_x$ 和 $\mathbb{R}_x$ 记录了线程 $t$ 对变量 $x$ 的最后一次读/写的 clock
+  
+  - 线程 $t$ 对变量 $x$ 的读时，会将 $\mathbb{R}_x[t]$ 的值更新为 $\mathbb{C}_t(t)$ 的值
+  
+  - 程序 $t$ 对变量 $x$ 的写时，会将 $\mathbb{W}_x[t]$ 的值更新为 $\mathbb{C}_t(t)$ 的值
 
 - 程序中执行同步和线程操作时，算法会更新相应的 vector clock：
   
@@ -137,6 +143,12 @@ $DJIT^+$ Algorithm 就是基于 vector clock 来检测 data race 的：
   
   - $join(t, u)$，$DJIT^+$ 会先将 $\mathbb{C}_t$ 的值更新为 $\mathbb{C}_t\sqcup \mathbb{C}_u$，再将 $\mathbb{C}_u$ 的值更新为 $inc_u(\mathbb{C}_u)$
 
+- 如何判断是否存在 data race：
+  
+  - 假设当前线程 $u$ 读变量 $x$ ，如果 $\mathbb{W}_x \sqsubseteq \mathbb{C}_u$ 那么当前线程 $u$ 对变量 $x$ 的读则与之前其他线程对变量 $x$ 的写不存在 data race
+  
+  - 假设当前线程 $u$ 写变量 $x$ ，如果 $\mathbb{W}_x \sqsubseteq \mathbb{C}_u$ 且 $\mathbb{R}_x \sqsubseteq \mathbb{C}_u$ 那么当前线程 u 对变量 $x$ 的写则与之前其他线程对变量 $x$ 的写和读不存在 data race
+
 我们用如下例子来理解 $DJIT^+$ 是如何检测 data race 的：
 
 ![](./assets/Figure-1.png)
@@ -145,13 +157,13 @@ $DJIT^+$ Algorithm 就是基于 vector clock 来检测 data race 的：
 
 1. 初始状态时，$\mathbb{C}_0$ 为 <4, 0>，$\mathbb{C}_1$ 为 <0, 8>，$\mathbb{L}_m$ 为 <0, 0>（即 $\bot_C$），$\mathbb{W}_x$ 为 <0, 0>（即 $\bot_C$）
 
-2. 线程 0 写变量 $x$，vector clock $\mathbb{W}_x$ 的值更新为 $\mathbb{C}_0$ 的值 <4, 0>，其余 vector clock 的值不变
+2. 线程 0 写变量 $x$，vector clock $\mathbb{W}_x[0]$ 的值更新为 $\mathbb{C}_0[0]$ 的值，所以 $\mathbb{W}_x$ 的值由 <0, 0>更新为 <4, 0>，其余 vector clock 的值不变
 
 3. 线程 0 释放锁 $m$，vector clock $\mathbb{L}_m$ 的值更新为 $\mathbb{C}_0$ 的值 <4, 0>，然后 vector clock $\mathbb{C}_0$ 的值更新为 $inc_0(\mathbb{C}_0)$ 即 <5, 0>，其余 vector clock 的值不变
 
 4. 线程 1 获取锁 $m$，vector clock $\mathbb{C}_1$ 的值更新为 $\mathbb{C}_1 \sqcup \mathbb{L}_m$ 即 <0, 8> $\sqcup$ <4, 0> = <4, 8>，其余 vector clock 的值不变
 
-5. 线程 1 写变量 $x$，由于 $\mathbb{C}_1$ 为 <4, 8>，$\mathbb{W}_x$ 为 <4, 0>，所以 $\mathbb{W}_x\;\sqsubseteq\;\mathbb{C}_1$，也就是说 $\mathbb{wr(0, x)}\;\text{happen-before}\;\mathbb{wr(1, x)}$，所以线程 1 写变量 $x$ 与线程 0 写变量 $x$ 之间没有 data race。最后还要更新 $\mathbb{W}_x$ 为 $\mathbb{C}_1$ 的值即 <4, 8>，其余 vector clock 的值不变
+5. 线程 1 写变量 $x$，由于 $\mathbb{C}_1$ 为 <4, 8>，$\mathbb{W}_x$ 为 <4, 0>，所以 $\mathbb{W}_x\;\sqsubseteq\;\mathbb{C}_1$，也就是说 $\mathbb{wr(0, x)}\;\text{happen-before}\;\mathbb{wr(1, x)}$，所以线程 1 写变量 $x$ 与线程 0 写变量 $x$ 之间没有 data race。最后还要更新 $\mathbb{W}_x[1]$ 为 $\mathbb{C}_1[1]$ ，即 $\mathbb{W}_x$ 的值由 <4, 0> 变为 <4, 8>，其余 vector clock 的值不变
 
 ## FastTrack Algorithm
 
