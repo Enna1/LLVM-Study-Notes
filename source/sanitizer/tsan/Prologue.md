@@ -17,5 +17,3 @@ P.S.1 TSan runtime 最新是 [V3](https://reviews.llvm.org/D112603) 版本，截
 P.S.2 我就 TSan 的底层算法[请教](https://reviews.llvm.org/D119417)了 TSan 作者 Dmitry Vyukov，得到回复是：TSan V2/V3 使用的算法都是类似于作者的另外一个 data race 检测工具 **[Relacy'08](https://github.com/dvyukov/relacy)** ，但是该工具没有论文，只有源码。
 
 P.S.3 Konstantin Serebryany 诚不欺我，TSan V2 使用算法确实**类似** FastTrack(PLDI'09) 算法，学习 FastTrack(PLDI'09) 对于理解 TSan V2 的底层算法非常有帮助。
-
-
