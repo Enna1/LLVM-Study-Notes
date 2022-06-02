@@ -1,12 +1,11 @@
-Sanitizer
+How To Write a Sanitizer
 =========================================================
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   writing-a-sanitizer/index
-   tsan/index
+   DumbSanitizerHowTo
 
 
 
