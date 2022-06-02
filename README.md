@@ -24,6 +24,7 @@ Read the Docs 在线文档地址：https://llvm-clang-study-notes.readthedocs.io
 - Link Time Optimization
   - [LTO Remove Dead Symbol](https://llvm-clang-study-notes.readthedocs.io/en/latest/lto/RemoveDeadSymbol.html)
 - Sanitizer
+  - [How To Write a Sanitizer](https://llvm-clang-study-notes.readthedocs.io/en/latest/sanitizer/writing-a-sanitizer/index.html)
   - [ThreadSanitizer](https://llvm-clang-study-notes.readthedocs.io/en/latest/sanitizer/tsan/index.html)
 - Misc
   - [Exploring C++ Undefined Behavior Using Constexpr](https://llvm-clang-study-notes.readthedocs.io/en/latest/misc/UB_Constexpr.html)
