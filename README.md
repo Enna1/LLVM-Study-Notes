@@ -26,5 +26,6 @@ Read the Docs 在线文档地址：https://llvm-study-notes.readthedocs.io/
 - Sanitizer
   - [How To Write a Sanitizer](https://llvm-study-notes.readthedocs.io/en/latest/sanitizer/writing-a-sanitizer/index.html)
   - [ThreadSanitizer](https://llvm-study-notes.readthedocs.io/en/latest/sanitizer/tsan/index.html)
+  - [GWP-ASan](https://llvm-study-notes.readthedocs.io/en/latest/sanitizer/gwp-asan/index.html)
 - Misc
   - [Exploring C++ Undefined Behavior Using Constexpr](https://llvm-study-notes.readthedocs.io/en/latest/misc/UB_Constexpr.html)

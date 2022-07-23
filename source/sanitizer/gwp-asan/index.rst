@@ -1,13 +1,11 @@
-Sanitizer
+GWP-ASan
 =========================================================
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   writing-a-sanitizer/index
-   tsan/index
-   gwp-asan/index
+   GWP-ASan-Internals
 
 
 
