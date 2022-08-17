@@ -1,14 +1,11 @@
-Sanitizer
+How Sanitizer Runtime Initialized
 =========================================================
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   writing-a-sanitizer/index
-   sanitizer-runtime-init/index
-   tsan/index
-   gwp-asan/index
+   HowSanitizerRuntimeInit
 
 
 

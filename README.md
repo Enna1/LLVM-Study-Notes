@@ -25,6 +25,7 @@ Read the Docs 在线文档地址：https://llvm-study-notes.readthedocs.io/
   - [LTO Remove Dead Symbol](https://llvm-study-notes.readthedocs.io/en/latest/lto/RemoveDeadSymbol.html)
 - Sanitizer
   - [How To Write a Sanitizer](https://llvm-study-notes.readthedocs.io/en/latest/sanitizer/writing-a-sanitizer/index.html)
+  - [How Sanitizer Runtime Initialized](https://llvm-study-notes.readthedocs.io/en/latest/sanitizer/sanitizer-runtime-init/index.html)
   - [ThreadSanitizer](https://llvm-study-notes.readthedocs.io/en/latest/sanitizer/tsan/index.html)
   - [GWP-ASan](https://llvm-study-notes.readthedocs.io/en/latest/sanitizer/gwp-asan/index.html)
 - Misc
