@@ -1,15 +1,11 @@
-Sanitizer
+How Sanitizer Interceptor Works
 =========================================================
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   writing-a-sanitizer/index
-   sanitizer-runtime-init/index
-   sanitizer-interceptor/index
-   tsan/index
-   gwp-asan/index
+   HowSanitizerInterceptorWorks
 
 
 
