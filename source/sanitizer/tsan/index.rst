@@ -6,6 +6,7 @@ ThreadSanitizer
    :caption: Contents:
 
    Prologue
+   dissecting-thread-sanitizer
    FastTrack_PLDI'09
    TreeClock_ASPLOS'22
 
