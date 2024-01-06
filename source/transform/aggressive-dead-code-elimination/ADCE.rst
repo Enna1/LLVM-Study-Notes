@@ -235,7 +235,7 @@ live 的 指令，最后消除那些 dead 指令。
       中，没什么好说的。然后就是看该指令是否为其所在基本块的 terminator
       指令，如果是的话，就更新 ``BlocksWithDeadTerminators``
       (如果该指令在``BlocksWithDeadTerminators`` 中，就从中删除该指令)
-      。如果该指令是其所在基本块的 terminator 指令，并且是一个无条件的
+      。如果该指令是其所在基本块的 terminator 指令，并且不是一个无条件的
       ``BranchInst``\ ，就调用 ``void markLive(BasicBlock *BB)``
       将其所在基本块的后继基本块都设置为 live，最后调用
       ``void markLive(BlockInfoType &BBInfo)``
